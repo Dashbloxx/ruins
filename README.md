@@ -1,14 +1,10 @@
-# FiveYellowMice's Useless Block Game
-
-Attempt to imitate Minecraft in the process of learning OpenGL.
-
-## Building
-
-1. Clone repo
-2. `git submodule init`  
-   `git submodule update`
-3. Install GLEW and libpng
-4. `mkdir build`  
-   `cd build`
-5. `cmake -DCMAKE_BUILD_TYPE=Debug ..`
-   `make`
+# Ruins
+## About
+Ruins is a small Minecraft clone written fully in C/C++ aswell as GLSL for shaders.
+## Getting the source code
+Make sure that when you obtain the source code, you use `git`, with the `--recursive` parameter:
+```
+git clone --recursive https://github.com/Dashbloxx/ruins.git
+```
+## Requirements
+You will need CMake & some sort of C compiler. Building with CMake will build the required libraries & ruins itself.
