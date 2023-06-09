@@ -23,7 +23,7 @@ endif()
 #configure_file(build_config.h.in build_config.h)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/build_config.h.in ${CMAKE_CURRENT_BINARY_DIR}/build_config.h)
 
-file(GLOB SOURCE_FILES source/*.cpp)
+file(GLOB SOURCE_FILES source/*.c)
 
 add_executable(ruins ${SOURCE_FILES})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
