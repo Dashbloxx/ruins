@@ -2,4 +2,4 @@
 
 #include "types.h"
 
-void draw_cube(integer_vector3_t position);
+void draw_triangle(precise_vector3_t a, precise_vector3_t b, precise_vector3_t c);

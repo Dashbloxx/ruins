@@ -7,6 +7,8 @@ project(ruins)
 
 find_package(GLEW 2.2 REQUIRED)
 
+find_package(GLEW REQUIRED)
+
 include(FindPNG)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
@@ -27,4 +29,4 @@ file(GLOB SOURCE_FILES source/*.c)
 
 add_executable(ruins ${SOURCE_FILES})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
-target_link_libraries(ruins GLEW glfw GL glm::glm PNG::PNG)
+target_link_libraries(ruins GLU GLEW glfw GL glm::glm PNG::PNG)
