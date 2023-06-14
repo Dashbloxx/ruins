@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 #include "types.h"
+#include "draw.h"
 
 /** @brief The width & height of the screen. */
 int g_width = 800, g_height = 600; 
@@ -71,34 +72,11 @@ int main() {
 
 	glViewport(0, 0, g_width, g_height);
 
-    glEnable(GL_DEPTH_TEST);
-
-    /**
-     *  @brief Load shader(s), compile them, link them to a single binary, and then use them.
-     *
-     *  @note All shaders are located in a subdirectory named `shaders`.
-     */
-	const char* vertex_shader_source = load_file("../shaders/vertex_shader.glsl");
-    GLuint vertex_shader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertex_shader, 1, &vertex_shader_source, NULL);
-    glCompileShader(vertex_shader);
-
-	const char* fragment_shader_source = load_file("../shaders/fragment_shader.glsl");
-    GLuint fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragment_shader, 1, &fragment_shader_source, NULL);
-    glCompileShader(fragment_shader);
-
-	GLuint shader_program = glCreateProgram();
-    glAttachShader(shader_program, vertex_shader);
-    glAttachShader(shader_program, fragment_shader);
-    glLinkProgram(shader_program);
-    glUseProgram(shader_program);
+    //glEnable(GL_DEPTH_TEST);
 
     /**
      *  @brief Set up vertex atribute pointer & enable vertex attribute at index 0.
      */
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
-    glEnableVertexAttribArray(0);
 
     /**
      *  @brief Loop that renders objects.
@@ -110,14 +88,13 @@ int main() {
 
         glLoadIdentity();
 
-        draw_triangle((precise_vector3_t){-0.5, -0.5, 0.0}, (precise_vector3_t){0.5, -0.5, 0.0}, (precise_vector3_t){0.0,  0.5, 0.0});
+        draw_triangle((precise_vector3_t){-0.5, -0.5, 0.0}, (precise_vector3_t){0.5, -0.5, 0.0}, (precise_vector3_t){0.0,  0.5, 0.0}, "../textures/grass.jpg");
 		
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 
     /** @brief Delete the shader program & terminate GLFW, aswell as returning exit code 0. */
-    glDeleteProgram(shader_program);
 	glfwTerminate();
 
 	return 0;
